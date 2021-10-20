@@ -1,0 +1,49 @@
+import java.util.*;
+public class Armstrong 
+{ 
+int pow(int x, long y) 
+{ 
+if( y == 0) 
+return 1; 
+if (y%2 == 0) 
+return pow(x, y/2)*pow(x, y/2); 
+return x*pow(x, y/2)*pow(x, y/2); 
+} 
+int order(int num) 
+{ 
+int n = 0; 
+while (num != 0) 
+{ 
+n++; 
+num = num/10; 
+} 
+return n; 
+} 
+boolean isArmstrong (int num) 
+{ 
+int n = order(num); 
+int temp=num, sum=0; 
+while (temp!=0) 
+{ 
+int r = temp%10; 
+sum = sum + pow(r,n); 
+temp = temp/10; 
+}  
+return (sum == num); 
+} 
+public static void main(String[] args) 
+{ 
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the number ");
+int num = sc.nextInt(); 
+Armstrong obj = new Armstrong(); 
+if(obj.isArmstrong(num))
+{
+System.out.println("Yes "+num+" is an Armstrong number");
+}
+else
+{
+System.out.println(num+" is not an Armstrong number");
+}       
+} 
+} 
